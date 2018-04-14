@@ -1,0 +1,24 @@
+# Ping
+GET        /ping                                      controllers.PingController.ping
+HEAD       /ping                                      controllers.PingController.ping
+
+
+# Auth
+POST    /users/:userId/logout                         controllers.auth.LogoutController.logout(userId: Long)
+POST    /auth/signup                                  controllers.auth.SignupController.signup
+POST    /auth/login                                   controllers.auth.LoginController.login
+
+# Email Verification
+GET     /email-verification/:hash                     controllers.user.EmailVerificationController.verifyEmail(hash: String)
+POST    /users/:userId/email-verification             controllers.user.EmailVerificationController.resendEmailVerification(userId: Long)
+
+# Password Change
+POST    /password-change                              controllers.user.ChangePasswordController.changePassword
+POST    /password-change/request                      controllers.user.ChangePasswordController.changePasswordRequest
+GET     /password-change/:verificationCode            controllers.user.ChangePasswordController.changePasswordData(verificationCode: String)
+
+# User
+PUT     /users/:userId/profile                        controllers.user.UserProfileController.updateUserProfile(userId: Long)
+PUT     /users/:userId/email                          controllers.user.UserController.updateEmail(userId: Long)
+DELETE  /users/:userId                                controllers.user.UserController.delete(userId: Long)
+GET     /users/:userId                                controllers.user.UserController.get(userId: Long)

@@ -158,7 +158,7 @@ class UserEmailService(userRepo: UserRepo,
     checkList(listEitherDeletedEmailVerifications, 0)
   }
 
-  private def checkList(l: List[Either[String, Int]], goodCount: Int): Either[String, String] = l match {
+  private def checkList(l: List[Either[String, Long]], goodCount: Int): Either[String, String] = l match {
     case Left(err) :: xs => Left(err)
     case Right(_) :: xs => checkList(xs, goodCount + 1)
     case Nil => Right("previous.emailverifications.deleted")
